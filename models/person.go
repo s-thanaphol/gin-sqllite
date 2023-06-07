@@ -134,29 +134,29 @@ func UpdatePerson(ourPerson Person, personId int) (bool, error) {
 	return true, nil
 }
 
-// func DeletePerson(personId int) (bool, error) {
+func DeletePerson(personId int) (bool, error) {
 
-// 	tx, err := DB.Begin()
+	tx, err := DB.Begin()
 
-// 	if err != nil {
-// 		return false, err
-// 	}
+	if err != nil {
+		return false, err
+	}
 
-// 	stmt, err := DB.Prepare("DELETE from people where id = ?")
+	stmt, err := DB.Prepare("DELETE from people where id = ?")
 
-// 	if err != nil {
-// 		return false, err
-// 	}
+	if err != nil {
+		return false, err
+	}
 
-// 	defer stmt.Close()
+	defer stmt.Close()
 
-// 	_, err = stmt.Exec(personId)
+	_, err = stmt.Exec(personId)
 
-// 	if err != nil {
-// 		return false, err
-// 	}
+	if err != nil {
+		return false, err
+	}
 
-// 	tx.Commit()
+	tx.Commit()
 
-// 	return true, nil
-// }
+	return true, nil
+}
